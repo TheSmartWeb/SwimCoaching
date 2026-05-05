@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFlow Swim Coaching | Professional Swimming Lessons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0a6eae;
+            --secondary-blue: #4cb5f5;
+            --light-blue: #e6f4fa;
+            --aqua: #2dd4bf;
+            --white: #ffffff;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 110, 174, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 110, 174, 0.2);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--aqua));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+        }
+
+        header.scrolled .logo {
+            color: var(--primary-blue);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--aqua);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        header.scrolled .nav-toggle {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--white);
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled .nav-link {
+            color: var(--primary-blue);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--aqua);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(10, 110, 174, 0.7), rgba(10, 110, 174, 0.5)), 
+                        url('https://images.pexels.com/photos/1263348/pexels-photo-1263348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .hero-content.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .about-text.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .about-img.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Programs Section */
+        .programs {
+            background-color: var(--light-blue);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .program-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 1.5rem;
+        }
+
+        .program-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .program-content .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--aqua);
+            margin-bottom: 1rem;
+        }
+
+        .program-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .program-content ul li:before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--aqua);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: var(--light-blue);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .testimonial.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text:before,
+        .testimonial-text:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--aqua);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text:before {
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .testimonial-text:after {
+            bottom: -2rem;
+            right: -1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--primary-blue);
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-blue);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-text p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--aqua);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .contact-form.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(10, 110, 174, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--aqua);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--aqua);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .wave {
+            display: inline-block;
+            animation: wave 2s infinite;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text {
+                order: 2;
+                text-align: center;
+            }
+            
+            .about-img {
+                order: 1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .nav-link {
+                color: var(--primary-blue);
+                font-size: 1.2rem;
+            }
+            
+            header.scrolled .nav-menu {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .program-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-swimming-pool"></i> AquaFlow</a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#programs" class="nav-link">Programs</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Swimming <span class="wave">🏊</span></h1>
+            <p>Professional swim coaching for all ages and skill levels. Build confidence, improve technique, and achieve your aquatic goals in our state-of-the-art facilities.</p>
+            <div class="hero-btns">
+                <a href="#programs" class="btn btn-primary">View Programs</a>
+                <a href="#contact" class="btn btn-secondary">Book a Lesson</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Our Coaching</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Expert Coaching Tailored To You</h3>
+                    <p>At AquaFlow, we believe every swimmer is unique. Our certified coaches create personalized training programs to help you reach your full potential in the water.</p>
+                    <p>With over 15 years of competitive swimming experience and coaching at national levels, our head coach brings world-class expertise to every lesson.</p>
+                    <p>We focus on proper technique, efficiency in the water, and building confidence through progressive skill development.</p>
+                    <a href="#programs" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Swim coach giving instructions" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+        <div class="container">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.pexels.com/photos/61129/pexels-photo-61129.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Children swimming lesson" loading="lazy">
+                    </div>
+                    <div class="program-content">
+                        <h3>Junior Swim Academy</h3>
+                        <p class="price">From $120/month</p>
+                        <p>Fun, safe lessons for children aged 4-12 to build water confidence and learn proper swimming techniques.</p>
+                        <ul>
+                            <li>Small class sizes (max 4 students)</li>
+                            <li>Progress tracking system</li>
+                            <li>Water safety education</li>
+                            <li>Weekly 45-minute sessions</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Adult swimming lesson" loading="lazy">
+                    </div>
+                    <div class="program-content">
+                        <h3>Adult Learn-to-Swim</h3>
+                        <p class="price">From $150/month</p>
+                        <p>Overcome your fear of water and learn to swim in a supportive, judgment-free environment.</p>
+                        <ul>
+                            <li>Personalized approach</li>
+                            <li>Patient, experienced instructors</li>
+                            <li>Flexible scheduling</li>
+                            <li>Private or semi-private options</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Competitive swim training" loading="lazy">
+                    </div>
+                    <div class="program-content">
+                        <h3>Competitive Training</h3>
+                        <p class="price">From $200/month</p>
+                        <p>Advanced training for competitive swimmers looking to improve performance and technique.</p>
+                        <ul>
+                            <li>Stroke refinement</li>
+                            <li>Race strategy development</li>
+                            <li>Video analysis</li>
+                            <li>Strength & conditioning</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Swimmers Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        <p>My 8-year-old went from being afraid to put his face in the water to swimming confidently in just three months. The coaches are amazing with kids!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah Johnson" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Parent of Junior Swimmer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        <p>After years of avoiding pools, I finally learned to swim at 35 thanks to the patient and supportive coaches at AquaFlow. Life-changing experience!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Michael Chen" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Adult Learn-to-Swim Student</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        <p>The competitive training program helped shave 2 seconds off my 100m freestyle in just 8 weeks. The technical focus and video analysis made all the difference.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="David Rodriguez" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Rodriguez</h4>
+                            <p>Competitive Swimmer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>123 Aquatic Drive<br>Waterford, CA 95379</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@aquaflowswim.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Hours</h4>
+                                <p>Monday-Friday: 6am-9pm<br>Saturday-Sunday: 7am-7pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Book Your First Lesson</h3>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Select Program</option>
+                                <option value="junior">Junior Swim Academy</option>
+                                <option value="adult">Adult Learn-to-Swim</option>
+                                <option value="competitive">Competitive Training</option>
+                                <option value="private">Private Lessons</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message (Optional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>AquaFlow</h4>
+                    <p>Professional swim coaching for all ages and skill levels. Build confidence, improve technique, and achieve your aquatic goals.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Junior Swim Academy</a></li>
+                        <li><a href="#">Adult Lessons</a></li>
+                        <li><a href="#">Competitive Training</a></li>
+                        <li><a href="#">Private Coaching</a></li>
+                        <li><a href="#">Water Safety Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:5551234567">(555) 123-4567</a></li>
+                        <li><a href="mailto:info@aquaflowswim.com">info@aquaflowswim.com</a></li>
+                        <li>123 Aquatic Drive</li>
+                        <li>Waterford, CA 95379</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 AquaFlow Swim Coaching. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Intersection Observer for animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.hero-content, .about-text, .about-img, .program-card, .testimonial, .contact-info, .contact-form');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        };
+        
+        // Lazy loading images
+        const lazyLoadImages = () => {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        };
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            lazyLoadImages();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Hero content animation on load
+            const heroContent = document.querySelector('.hero-content');
+            setTimeout(() => {
+                heroContent.classList.add('animate');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
